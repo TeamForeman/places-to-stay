@@ -1,13 +1,13 @@
-# Project Name
+# beartnt Places-to-Stay Module
 
-> Project description
+> This is the more places to stay module for a mock airbnb apartment listing page. This is the development repo for creating the portion of the page that displays more places to stay nearby the main listing on the page.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - Reservation module: https://github.com/Mormont-team-6/Reservation-Service
+  - Reviews module: https://github.com/Mormont-team-6/Customer-Reviews-Service
+  - Photo-carousel module: https://github.com/teamName/repo
+  - Places-to-stay proxy module: https://github.com/Mormont-team-6/places-to-stay-proxy
 
 ## Table of Contents
 
@@ -17,7 +17,8 @@
 
 ## Usage
 
-> Some usage instructions
+> To make changes run npm run build to start web-pack for front in react development.
+> To make and track changes on the server run npm start to start running the server with nodemon.
 
 ## Requirements
 
