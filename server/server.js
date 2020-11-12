@@ -4,7 +4,7 @@ const db = require('../db/db.js');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../public/dist')));
 
 const port = 3000;
 
