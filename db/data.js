@@ -14,7 +14,7 @@ var relatedMaker = function(mainId) {
   var array = [];
   var ids = [];
   while (ids.length < 12) {
-    var id = faker.random.number({'min': 0, 'max': 100})
+    var id = faker.random.number({'min': 0, 'max': 100});
     if (id !== mainId && !ids.includes(id)) {
       ids.push(id);
     }
