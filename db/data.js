@@ -23,6 +23,7 @@ var relatedMaker = function(mainId) {
   while (array.length < 12) {
     array.push({
       id: ids[idIndex],
+      url: `http://localhost:3004/listing/${ids[idIndex]}`,
       type: houseTypes[Math.floor(Math.random() * houseTypes.length)],
       numOfBeds: Math.ceil(Math.random() * 5),
       photoUrl: faker.image.city(),
@@ -44,7 +45,7 @@ var listingsMaker = function(max) {
   while (array.length < max) {
     array.push({
       lId: id,
-      relatedListings: relatedMaker()
+      relatedListings: relatedMaker(id)
     });
     id++;
   }
