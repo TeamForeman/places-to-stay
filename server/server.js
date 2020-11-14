@@ -25,14 +25,6 @@ app.get('/api/more/listings/:id', (req, res) => {
     });
 });
 
-
-
-// non api get request for /:id
-// res.sendFile(path to index.html)
-
-// inside react
-// componentDidMount( window.location() give you the url /id axios(get. '/api/more/listings/id))
-
 // getting all of the users favorite lists
 app.get('/api/users/:id/favorites', (req, res) => {
   var userId = {uId: req.params.id};
