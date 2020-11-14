@@ -10,7 +10,8 @@
   "scripts": {
     "build": "webpack -d --watch",
     "start": "nodemon ./server/server.js",
-    "seed": "node ./db/data.js"
+    "seed": "node ./db/data.js",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -26,6 +27,7 @@
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^26.6.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   }
