@@ -6,6 +6,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    console.log(window.location);
+  }
   render() {
     return (
       <div>Hello World!</div>
@@ -13,4 +16,4 @@ class App extends React.Component {
   }
 }
 
-ReacDOM.render(<App/>, document.getElementById('app'))
+ReacDOM.render(<App/>, document.getElementById('app'));
