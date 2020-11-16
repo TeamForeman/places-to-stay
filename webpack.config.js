@@ -1,9 +1,10 @@
 const path = require('path');
 var ENTRY_PATH = path.join(__dirname, 'client/src/index.jsx');
+var OUT_PATH = path.resolve(__dirname, 'public/dist');
 module.exports = {
   entry: ENTRY_PATH,
   output: {
-    path: path.resolve(__dirname, 'public/dist'),
+    path: OUT_PATH,
     filename: 'bundle.js'
   },
   watch: true,
@@ -18,7 +19,11 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ]
   }
 }
