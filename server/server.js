@@ -11,6 +11,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const port = 3004;
 
+app.get('/listing/*', (req, res) => {
+  if (+req.params['0'] >= 1 && +req.params['0'] <= 100) {
+    res.status(200);
+    res.sendFile(path.join(__dirname, '../public/dist/index.html'));
+  } else {
+    res.status(404);
+    res.end();
+  }
+});
+
 // getting the related listings for a specific listing
 app.get('/api/more/listings/:id', (req, res) => {
   var listingId = req.params.id;
