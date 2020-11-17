@@ -25,8 +25,8 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <FlexUl>
-        <li id="1">
+      <FlexUl className="listings-scroll">
+        <div id="1">
           <FlexDiv>
             {related.map((listing, i) => {
               if (i <= 3) {
@@ -36,8 +36,8 @@ const App = () => {
               }
             })}
           </FlexDiv>
-        </li>
-        <li id="2">
+        </div>
+        <div id="2">
           <FlexDiv>
             {related.map((listing, i) => {
               if (i > 3 && i <= 7) {
@@ -47,8 +47,8 @@ const App = () => {
               }
             })}
           </FlexDiv>
-        </li>
-        <li id="3">
+        </div>
+        <div id="3">
           <FlexDiv>
             {related.map((listing, i) => {
               if (i > 7) {
@@ -58,9 +58,12 @@ const App = () => {
               }
             })}
           </FlexDiv>
-        </li>
+        </div>
       </FlexUl>
-      <a href="#2">test</a>
+      <a href="#3">test3</a>
+      <a href="#2">test2</a>
+      <a href="#1">test1</a>
+
     </React.Fragment>
   );
 };
