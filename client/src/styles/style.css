@@ -16,6 +16,18 @@ svg {
   display: none;
 }
 
+h2 {
+  margin: 0;
+}
+
+.prev {
+  margin-right: 6px;
+}
+
+.next {
+  margin-left: 6px;
+}
+
 .listings-scroll {
   -ms-overflow-style: none;
   scrollbar-width: none;

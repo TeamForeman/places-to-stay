@@ -3,7 +3,7 @@ import ReacDOM from 'react-dom';
 import './styles/style.css';
 import helpers from '../api_helpers/helpers.js';
 import Listing from './components/Listing.jsx';
-import {SlidingDiv, GroupDiv} from './styles/styled_components.js';
+import {SlidingDiv, GroupDiv, PageButton, HeaderDiv, Main, PagesDiv, PageCount} from './styles/styled_components.js';
 
 
 const App = () => {
@@ -64,21 +64,23 @@ const App = () => {
   };
 
   return (
-    <React.Fragment>
-      <div>
+    <Main>
+      <HeaderDiv>
         <h2>More places to stay</h2>
-        <div>{page}/3</div>
-        <button type="button" onClick={previous}>
-          <svg viewBox="0 0 18 18">
-            <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
-          </svg>
-        </button>
-        <button type="button" onClick={next}>
-          <svg viewBox="0 0 18 18">
-            <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path>
-          </svg>
-        </button>
-      </div>
+        <PagesDiv>
+          <PageCount>{page}/3</PageCount>
+          <PageButton className="prev" type="button" onClick={previous}>
+            <svg viewBox="0 0 18 18">
+              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
+            </svg>
+          </PageButton>
+          <PageButton className="next" type="button" onClick={next}>
+            <svg viewBox="0 0 18 18">
+              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path>
+            </svg>
+          </PageButton>
+        </PagesDiv>
+      </HeaderDiv>
       <SlidingDiv className="listings-scroll">
         <GroupDiv id="1">
           {related.map((listing, i) => {
@@ -108,7 +110,7 @@ const App = () => {
           })}
         </GroupDiv>
       </SlidingDiv>
-    </React.Fragment>
+    </Main>
   );
 };
 
