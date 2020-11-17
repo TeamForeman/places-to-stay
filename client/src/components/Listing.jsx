@@ -3,10 +3,11 @@ import ReacDOM from 'react-dom';
 
 const Listing = (props) => {
   return (
-    <div>
-      <img src={props.photo}></img>
-      <a href={props.url}>{props.url}</a>
-    </div>
+    <a href={props.url}>
+      <div>
+        <img class="small" src={props.photo}></img>
+      </div>
+    </a>
   );
 };
 

@@ -3,7 +3,7 @@ import ReacDOM from 'react-dom';
 import './styles/style.css';
 import helpers from '../api_helpers/helpers.js';
 import Listing from './components/Listing.jsx';
-import {FlexDiv} from './styles/styled_components.js';
+import {FlexUl, FlexDiv} from './styles/styled_components.js';
 
 
 const App = () => {
@@ -11,7 +11,6 @@ const App = () => {
   const [listingId, setListing] = useState(null);
 
   useEffect(() => {
-    console.log(window.location);
     var pathArr = window.location.pathname.split('/');
     var id = pathArr[pathArr.length - 1];
     helpers.getListing(id)
@@ -25,11 +24,44 @@ const App = () => {
   }, []);
 
   return (
-    <FlexDiv>
-      {related.map(listing => {
-        return <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superHost} ratings={listing.numOfRatings} description={listing.description}/>;
-      })}
-    </FlexDiv>
+    <React.Fragment>
+      <FlexUl>
+        <li id="1">
+          <FlexDiv>
+            {related.map((listing, i) => {
+              if (i <= 3) {
+                return (
+                  <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superHost} ratings={listing.numOfRatings} description={listing.description}/>
+                );
+              }
+            })}
+          </FlexDiv>
+        </li>
+        <li id="2">
+          <FlexDiv>
+            {related.map((listing, i) => {
+              if (i > 3 && i <= 7) {
+                return (
+                  <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superHost} ratings={listing.numOfRatings} description={listing.description}/>
+                );
+              }
+            })}
+          </FlexDiv>
+        </li>
+        <li id="3">
+          <FlexDiv>
+            {related.map((listing, i) => {
+              if (i > 7) {
+                return (
+                  <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superHost} ratings={listing.numOfRatings} description={listing.description}/>
+                );
+              }
+            })}
+          </FlexDiv>
+        </li>
+      </FlexUl>
+      <a href="#2">test</a>
+    </React.Fragment>
   );
 };
 
