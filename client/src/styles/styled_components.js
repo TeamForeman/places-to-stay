@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FlexUl = styled.div`
+export const SlidingDiv = styled.div`
   max-width: 1128px;
   display: flex;
   overflow-x: scroll;
@@ -11,10 +11,12 @@ export const FlexUl = styled.div`
   margin: 0 auto;
 `;
 
-export const FlexDiv = styled.div`
+export const GroupDiv = styled.div`
+  flex: 0 0 100%;
+  height: 278px;
   display: flex;
-  text-align: center;
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
 `;
+
