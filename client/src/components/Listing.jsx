@@ -4,12 +4,11 @@ import ReacDOM from 'react-dom';
 const Listing = (props) => {
   return (
     <a href={props.url}>
-      <div>
-        <img class="small" src={props.photo}></img>
-      </div>
+      <img src={props.photo}></img>
     </a>
   );
 };
 
 
 export default Listing;
+
