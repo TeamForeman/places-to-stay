@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 img {
@@ -10,14 +11,26 @@ img {
 
 a {
   height: 100%;
+  width: 100%;
+  display: block;
+  position:absolute;
+  top: 0px;
   text-decoration: none;
   color: black;
 }
 
-svg {
+.arrow {
   height: 10px;
   width: 10px;
 }
+
+.heart {
+  height: 24px;
+  width: 24px;
+  stroke: white;
+  fill: rgba(0, 0, 0, .5);
+}
+
 .listings-scroll::-webkit-scrollbar {
   display: none;
 }

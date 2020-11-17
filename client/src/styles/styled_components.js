@@ -73,10 +73,13 @@ export const PageButton = styled.div`
 export const SuperHeart = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 0px;
   left: 0px;
   padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 export const Super = styled.div`
@@ -88,4 +91,16 @@ export const Super = styled.div`
   border-radius: 4px;
   padding: 4px 8px;
   box-shadow: rgba(0, 0, 0, .18) 0px 2px 4px;
+`;
+
+export const HeartButton = styled.button`
+  background: transparent;
+  border: 0px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+
 `;
