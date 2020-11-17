@@ -9,6 +9,7 @@ import {SlidingDiv, GroupDiv} from './styles/styled_components.js';
 const App = () => {
   const [related, setRelated] = useState([]);
   const [listingId, setListing] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
@@ -26,30 +27,38 @@ const App = () => {
   var next = () => {
     if (!window.location.hash) {
       window.location.href = window.location.href + '#2';
+      setPage(2);
     } else if (window.location.hash === '#2') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#3';
+      setPage(3);
     } else if (window.location.hash === '#3') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#1';
+      setPage(1);
     } else if (window.location.hash === '#1') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#2';
+      setPage(2);
     }
   };
 
   var previous = () => {
     if (!window.location.hash) {
       window.location.href = window.location.href + '#3';
+      setPage(3);
     } else if (window.location.hash === '#2') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#1';
+      setPage(1);
     } else if (window.location.hash === '#3') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#2';
+      setPage(2);
     } else if (window.location.hash === '#1') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#3';
+      setPage(3);
     }
 
   };
@@ -58,6 +67,7 @@ const App = () => {
     <React.Fragment>
       <div>
         <h2>More places to stay</h2>
+        <div>{page}/3</div>
         <button type="button" onClick={previous}>
           <svg viewBox="0 0 18 18">
             <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
@@ -98,10 +108,6 @@ const App = () => {
           })}
         </GroupDiv>
       </SlidingDiv>
-      <a href="#3">test3</a>
-      <a href="#2">test2</a>
-      <a href="#1">test1</a>
-
     </React.Fragment>
   );
 };
