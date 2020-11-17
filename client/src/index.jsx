@@ -68,7 +68,7 @@ const App = () => {
       <HeaderDiv>
         <h2>More places to stay</h2>
         <PagesDiv>
-          <PageCount>{page}/3</PageCount>
+          <PageCount>{page} / 3</PageCount>
           <PageButton className="prev" type="button" onClick={previous}>
             <svg viewBox="0 0 18 18">
               <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
@@ -86,7 +86,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i <= 3) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superHost} ratings={listing.numOfRatings} description={listing.description}/>
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description}/>
               );
             }
           })}
@@ -95,7 +95,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 3 && i <= 7) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superHost} ratings={listing.numOfRatings} description={listing.description}/>
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description}/>
               );
             }
           })}
@@ -104,7 +104,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 7) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superHost} ratings={listing.numOfRatings} description={listing.description}/>
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description}/>
               );
             }
           })}
