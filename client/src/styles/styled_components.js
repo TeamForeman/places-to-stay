@@ -5,11 +5,13 @@ export const Main = styled.div`
   text-align: center;
   margin: 0 auto;
 `;
+
 export const ListingDiv = styled.div`
   width: 24%;
   height: 100%;
   position: relative;
 `;
+
 export const SlidingDiv = styled.div`
   max-width: 1128px;
   display: flex;
