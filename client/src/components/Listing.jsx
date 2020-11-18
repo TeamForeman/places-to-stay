@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReacDOM from 'react-dom';
-import {ListingDiv, SuperHeart, Super, HeartButton} from '../styles/styled_components.js';
+import {ListingDiv, SuperHeart, Super, HeartButton, ListingImg} from '../styles/styled_components.js';
 
 const Listing = (props) => {
   return (
@@ -14,7 +14,7 @@ const Listing = (props) => {
           </svg>
         </HeartButton>
       </SuperHeart>
-      <img src={props.photo}></img>
+      <ListingImg src={props.photo}></ListingImg>
     </ListingDiv>
   );
 };
