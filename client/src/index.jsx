@@ -102,7 +102,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i <= 3) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} closeFunc={portalClose} />
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} />
               );
             }
           })}
@@ -111,7 +111,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 3 && i <= 7) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} closeFunc={portalClose} />
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} />
               );
             }
           })}
@@ -120,13 +120,13 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 7) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} closeFunc={portalClose} />
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} />
               );
             }
           })}
         </GroupDiv>
       </SlidingDiv>
-      <Favorites showing={showing} favorites={userFavs} />
+      <Favorites showing={showing} favorites={userFavs} closeFunc={portalClose} />
     </Main>
   );
 };
