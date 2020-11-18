@@ -76,7 +76,7 @@ var favoritesMaker = function(max) {
   for (let i = 0; i < max; i++) {
     array.push({
       name: favoriteTitles[i],
-      photUrl: faker.image.city(),
+      photoUrl: photoUrls[Math.floor(Math.random() * photoUrls.length)],
       listings: favListingMaker(Math.ceil(Math.random() * 5))
     });
   }
