@@ -4,6 +4,7 @@ import './styles/style.css';
 import {getListing, getUser} from '../api_helpers/helpers.js';
 import Listing from './components/Listing.jsx';
 import {SlidingDiv, GroupDiv, PageButton, HeaderDiv, Main, PagesDiv, PageCount} from './styles/styled_components.js';
+import Favorites from './components/Favorites.jsx';
 
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [userFavs, setUserFavs] = useState([]);
   const [userId, setUserId] = useState(null);
+  const [showing, setShowing] = useState(false);
 
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
@@ -67,7 +69,14 @@ const App = () => {
       window.location.href = sliced + '#3';
       setPage(3);
     }
+  };
 
+  var portalOpen = () => {
+    setShowing(true);
+  };
+
+  var portalClose = () => {
+    setShowing(false);
   };
 
   return (
@@ -93,7 +102,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i <= 3) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description}/>
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} closeFunc={portalClose} />
               );
             }
           })}
@@ -102,7 +111,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 3 && i <= 7) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description}/>
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} closeFunc={portalClose} />
               );
             }
           })}
@@ -111,12 +120,13 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 7) {
               return (
-                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description}/>
+                <Listing url={listing.url} key={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} closeFunc={portalClose} />
               );
             }
           })}
         </GroupDiv>
       </SlidingDiv>
+      <Favorites showing={showing} favorites={userFavs} />
     </Main>
   );
 };
