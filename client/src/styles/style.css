@@ -3,12 +3,6 @@ body {
   box-sizing: border-box;
 }
 
-img {
-  width: 100%;
-  height: 178px;
-  border-radius: 12px;
-}
-
 a {
   height: 100%;
   width: 100%;
@@ -17,6 +11,7 @@ a {
   top: 0px;
   text-decoration: none;
   color: black;
+  z-index: 1;
 }
 
 .arrow {

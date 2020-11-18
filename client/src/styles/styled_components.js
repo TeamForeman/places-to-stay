@@ -98,11 +98,57 @@ export const Super = styled.div`
 export const HeartButton = styled.button`
   background: transparent;
   border: 0px;
+  z-index: 2;
   &:focus {
     outline: none;
   }
   &:hover {
     cursor: pointer;
   }
+`;
 
+export const ListingImg = styled.img`
+width: 100%;
+height: 178px;
+border-radius: 12px;
+`;
+
+export const FavImg = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
+export const ModalDiv = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 568px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, .4);
+`;
+
+export const ModalHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+`;
+
+export const CloseButton = styled.button`
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
 `;
