@@ -180,3 +180,35 @@ export const ListDiv = styled.div`
 export const AllFavs = styled.div`
   padding: 20px 16px;
 `;
+
+export const ListHeader = styled.div`
+  margin-bottom: 4px;
+  font-size: 12px;
+`;
+
+export const ListName = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+`;
+
+export const ListStays = styled.div`
+  margin-top: 4px;
+  font-size: 14px;
+`;
+
+export const ModalFoot = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 24px;
+  border-top: 1px solid rgb(235, 235, 235);
+  min-height: 64px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CreateDiv = styled.div`
+  font-weight: 700;
+  text-decoration: underline;
+`;

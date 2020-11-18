@@ -1,5 +1,5 @@
 import React from 'react';
-import {FavImg, ListDiv} from '../styles/styled_components.js';
+import {FavImg, ListDiv, ListHeader, ListName, ListStays} from '../styles/styled_components.js';
 
 var FavList = (props) => {
   return (
@@ -8,15 +8,15 @@ var FavList = (props) => {
         <FavImg src={props.img}></FavImg>
       </div>
       <div>
-        <div>
+        <ListHeader>
           Any time
-        </div>
-        <div>
+        </ListHeader>
+        <ListName>
           {props.name}
-        </div>
-        <div>
+        </ListName>
+        <ListStays>
           {props.length} {props.length > 1 ? 'stays' : 'stay'}
-        </div>
+        </ListStays>
       </div>
     </ListDiv>
   );
