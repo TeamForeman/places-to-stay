@@ -6,7 +6,7 @@ export const Main = styled.div`
   margin: 0 auto;
 `;
 export const ListingDiv = styled.div`
-  width: 20%;
+  width: 24%;
   height: 100%;
   position: relative;
 `;
