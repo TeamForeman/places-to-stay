@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FavList from './FavList.jsx';
-import {ModalDiv, Overlay, ModalHead, CloseButton} from '../styles/styled_components';
+import {ModalDiv, Overlay, ModalHead, CloseButton, ModalTitle} from '../styles/styled_components';
 
 var Favorites = (props) => {
   if (!props.showing) {
@@ -14,7 +14,7 @@ var Favorites = (props) => {
       <ModalDiv>
         <ModalHead>
           <CloseButton onClick={props.closeFunc}>X</CloseButton>
-          <div>Save to a list</div>
+          <ModalTitle>Save to a list</ModalTitle>
           <div />
         </ModalHead>
         {props.favorites.map((list, i) => {

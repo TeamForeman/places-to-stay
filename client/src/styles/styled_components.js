@@ -142,13 +142,28 @@ export const Overlay = styled.div`
 export const ModalHead = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 24px;
   border-bottom: 1px solid rgb(235, 235, 235);
+  min-height: 64px;
 `;
 
 export const CloseButton = styled.button`
   border: none;
+  background-color: white;
+  height: 50px;
+  padding: 0;
+  font-size: 15px;
   &:hover {
     cursor: pointer;
   }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const ModalTitle = styled.div`
+  margin-right: 10px;
+  font-weight: 700;
+
 `;
