@@ -114,8 +114,9 @@ border-radius: 12px;
 `;
 
 export const FavImg = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
+  margin-right: 16px;
 `;
 
 export const ModalDiv = styled.div`
@@ -165,5 +166,17 @@ export const CloseButton = styled.button`
 export const ModalTitle = styled.div`
   margin-right: 10px;
   font-weight: 700;
+`;
 
+export const ListDiv = styled.div`
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  &:hover {
+    cursor:pointer;
+  }
+`;
+
+export const AllFavs = styled.div`
+  padding: 20px 16px;
 `;
