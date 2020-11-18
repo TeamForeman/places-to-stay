@@ -1,17 +1,20 @@
 import React from 'react';
+import {FavImg} from '../styles/styled_components.js';
 
 var FavList = (props) => {
+  console.log(props);
   return (
+
     <div>
       <div>
-        <img src={props.img}></img>
+        <FavImg src={props.img}></FavImg>
       </div>
       <div>
         <div>
           {props.name}
         </div>
         <div>
-          {props.length} {props.length > 1 ? "stays" : "stay"}
+          {props.length} {props.length > 1 ? 'stays' : 'stay'}
         </div>
       </div>
     </div>
