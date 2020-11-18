@@ -114,8 +114,9 @@ border-radius: 12px;
 `;
 
 export const FavImg = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
+  margin-right: 16px;
 `;
 
 export const ModalDiv = styled.div`
@@ -142,13 +143,72 @@ export const Overlay = styled.div`
 export const ModalHead = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 24px;
   border-bottom: 1px solid rgb(235, 235, 235);
+  min-height: 64px;
 `;
 
 export const CloseButton = styled.button`
   border: none;
+  background-color: white;
+  height: 50px;
+  padding: 0;
+  font-size: 15px;
   &:hover {
     cursor: pointer;
   }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const ModalTitle = styled.div`
+  margin-right: 10px;
+  font-weight: 700;
+`;
+
+export const ListDiv = styled.div`
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  &:hover {
+    cursor:pointer;
+  }
+`;
+
+export const AllFavs = styled.div`
+  padding: 20px 16px;
+`;
+
+export const ListHeader = styled.div`
+  margin-bottom: 4px;
+  font-size: 12px;
+`;
+
+export const ListName = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+`;
+
+export const ListStays = styled.div`
+  margin-top: 4px;
+  font-size: 14px;
+`;
+
+export const ModalFoot = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 24px;
+  border-top: 1px solid rgb(235, 235, 235);
+  min-height: 64px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CreateDiv = styled.div`
+  font-weight: 700;
+  text-decoration: underline;
 `;

@@ -1,21 +1,29 @@
-import React from 'react';
-import {FavImg} from '../styles/styled_components.js';
+import React, {useState} from 'react';
+import {FavImg, ListDiv, ListHeader, ListName, ListStays} from '../styles/styled_components.js';
 
 var FavList = (props) => {
+
+  var addToList = () => {
+    props.addFunc();
+  };
+
   return (
-    <div>
+    <ListDiv onClick={addToList}>
       <div>
         <FavImg src={props.img}></FavImg>
       </div>
       <div>
-        <div>
+        <ListHeader>
+          Any time
+        </ListHeader>
+        <ListName>
           {props.name}
-        </div>
-        <div>
+        </ListName>
+        <ListStays>
           {props.length} {props.length > 1 ? 'stays' : 'stay'}
-        </div>
+        </ListStays>
       </div>
-    </div>
+    </ListDiv>
   );
 };
 
