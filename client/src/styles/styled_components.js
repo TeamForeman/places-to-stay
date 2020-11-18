@@ -212,3 +212,20 @@ export const CreateDiv = styled.div`
   font-weight: 700;
   text-decoration: underline;
 `;
+
+export const RatingsDiv = styled.div`
+  margin-bottom: 6px;
+  text-align: left;
+  font-size: 15px;
+`;
+
+export const NumRatingSpan = styled.span`
+  color: rgb(113, 113, 113);
+  margin-left: 4px;
+`;
+
+export const HouseTypeDiv = styled.div`
+  font-size: 16px;
+  margin-bottom: 2px;
+  text-align: left;
+`;
