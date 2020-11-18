@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FavImg, ListDiv, ListHeader, ListName, ListStays} from '../styles/styled_components.js';
 
 var FavList = (props) => {
+
+  var addToList = () => {
+    props.addFunc();
+  };
+
   return (
-    <ListDiv>
+    <ListDiv onClick={addToList}>
       <div>
         <FavImg src={props.img}></FavImg>
       </div>

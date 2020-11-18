@@ -18,7 +18,7 @@ var Favorites = (props) => {
         </ModalHead>
         <AllFavs>
           {props.favorites.map((list, i) => {
-            return <FavList img={list.photoUrl} name={list.name} length={list.listings.length} key={i} />;
+            return <FavList addFunc = {props.addFunc} img={list.photoUrl} name={list.name} length={list.listings.length} key={i} />;
           })}
         </AllFavs>
         <ModalFoot>
