@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReacDOM from 'react-dom';
 import './styles/style.css';
-import helpers from '../api_helpers/helpers.js';
+import {getListing, getUser} from '../api_helpers/helpers.js';
 import Listing from './components/Listing.jsx';
 import {SlidingDiv, GroupDiv, PageButton, HeaderDiv, Main, PagesDiv, PageCount} from './styles/styled_components.js';
 
@@ -10,14 +10,21 @@ const App = () => {
   const [related, setRelated] = useState([]);
   const [listingId, setListing] = useState(null);
   const [page, setPage] = useState(1);
+  const [userFavs, setUserFavs] = useState([]);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
     var id = pathArr[pathArr.length - 1];
-    helpers.getListing(id)
-      .then(listingData =>{
+    getListing(id)
+      .then(listingData => {
         setRelated(listingData[1]);
         setListing(listingData[0]);
+        return getUser(1);
+      })
+      .then(userData => {
+        setUserFavs(userData[1]);
+        setUserId(userData[0]);
       })
       .catch(err => {
         console.log(err);
