@@ -5,11 +5,13 @@ export const Main = styled.div`
   text-align: center;
   margin: 0 auto;
 `;
+
 export const ListingDiv = styled.div`
-  width: 20%;
+  width: 24%;
   height: 100%;
   position: relative;
 `;
+
 export const SlidingDiv = styled.div`
   max-width: 1128px;
   display: flex;
@@ -73,10 +75,13 @@ export const PageButton = styled.div`
 export const SuperHeart = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 0px;
   left: 0px;
   padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 export const Super = styled.div`
@@ -88,4 +93,62 @@ export const Super = styled.div`
   border-radius: 4px;
   padding: 4px 8px;
   box-shadow: rgba(0, 0, 0, .18) 0px 2px 4px;
+`;
+
+export const HeartButton = styled.button`
+  background: transparent;
+  border: 0px;
+  z-index: 2;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const ListingImg = styled.img`
+width: 100%;
+height: 178px;
+border-radius: 12px;
+`;
+
+export const FavImg = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
+export const ModalDiv = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 568px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, .4);
+`;
+
+export const ModalHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+`;
+
+export const CloseButton = styled.button`
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
 `;

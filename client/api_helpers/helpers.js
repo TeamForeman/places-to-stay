@@ -1,8 +1,8 @@
-const axios = require('axios');
+import axios from 'axios';
 
 
 // get a specific listing
-var getListing = (id) => {
+export var getListing = (id) => {
   return axios.get(`/api/more/listings/${id}`)
     .then(results => {
       return ([results.data.lId, results.data.relatedListings]);
@@ -12,7 +12,14 @@ var getListing = (id) => {
     });
 };
 
-
-module.exports = {
-  getListing
+export var getUser = (id) => {
+  return axios.get(`/api/users/${id}/favorites`)
+    .then(results => {
+      return ([results.data.uId, results.data.favorites]);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
+
+
