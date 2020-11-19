@@ -26,6 +26,13 @@ a {
   fill: rgba(0, 0, 0, .5);
 }
 
+.star {
+  fill: rgb(255, 56, 92);
+  height: 14px;
+  width: 14px;
+  margin-right: 4px;
+}
+
 .listings-scroll::-webkit-scrollbar {
   display: none;
 }

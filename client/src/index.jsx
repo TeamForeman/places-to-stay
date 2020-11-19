@@ -114,7 +114,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i <= 3) {
               return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} />
+                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={portalOpen} />
               );
             }
           })}
@@ -123,7 +123,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 3 && i <= 7) {
               return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} />
+                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={portalOpen} />
               );
             }
           })}
@@ -132,7 +132,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 7) {
               return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} openFunc={portalOpen} />
+                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={portalOpen} />
               );
             }
           })}
