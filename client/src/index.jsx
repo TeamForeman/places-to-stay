@@ -73,6 +73,7 @@ const App = () => {
   };
 
   var portalOpen = (id) => {
+    console.log(id);
     setCurrentId(id);
     if (document.getElementById(id).style.fill === 'rgb(255, 56, 92)') {
       document.getElementById(id).style.fill = 'rgba(0, 0, 0, .5)';
