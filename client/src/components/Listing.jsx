@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReacDOM from 'react-dom';
-import {ListingDiv, SuperHeart, Super, HeartButton, ListingImg, RatingsDiv, NumRatingSpan, HouseTypeDiv} from '../styles/styled_components.js';
+import {ListingDiv, SuperHeart, Super, HeartButton, ListingImg, RatingsDiv, NumRatingSpan, HouseTypeDiv, DescriptionDiv, PriceDiv, PriceSpan} from '../styles/styled_components.js';
 
 const Listing = (props) => {
   var getId = () => {
@@ -35,6 +35,13 @@ const Listing = (props) => {
       <HouseTypeDiv>
         {props.type} · {props.beds} {props.beds > 1 ? 'beds' : 'bed'}
       </HouseTypeDiv>
+      <DescriptionDiv>
+        {props.description}
+      </DescriptionDiv>
+      <PriceDiv>
+        <PriceSpan>${props.price}</PriceSpan>
+        <span> / night</span>
+      </PriceDiv>
     </ListingDiv>
   );
 };

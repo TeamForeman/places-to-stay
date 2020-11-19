@@ -229,3 +229,22 @@ export const HouseTypeDiv = styled.div`
   margin-bottom: 2px;
   text-align: left;
 `;
+
+export const DescriptionDiv = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  text-align: left;
+  max-height: 19px;
+  white-space: nowrap
+`;
+
+export const PriceDiv = styled.div`
+  margin-top: 4px;
+  font-size: 16px;
+  text-align: left;
+`;
+
+export const PriceSpan = styled.span`
+  font-weight: 700;
+`;
