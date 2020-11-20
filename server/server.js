@@ -24,10 +24,11 @@ app.get('/listing/*', (req, res) => {
 // getting the related listings for a specific listing
 app.get('/api/more/listings/:id', (req, res) => {
   var listingId = req.params.id;
-  console.log(listingId);
   db.Listing.findOne({lId: listingId})
     .then(data => {
-      var related = data.relatedListings;
+      if (data === null) {
+        throw new Error(`No data for listing ${listingId}`);
+      }
       res.status(200).send(data);
     })
     .catch(err => {
