@@ -24,6 +24,7 @@ app.get('/listing/*', (req, res) => {
 // getting the related listings for a specific listing
 app.get('/api/more/listings/:id', (req, res) => {
   var listingId = req.params.id;
+  console.log(listingId);
   db.Listing.findOne({lId: listingId})
     .then(data => {
       var related = data.relatedListings;
