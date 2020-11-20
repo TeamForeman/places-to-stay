@@ -26,7 +26,6 @@ const App = () => {
         return getUser(1);
       })
       .then(userData => {
-        console.log(userData);
         setUserFavs(userData[1]);
         setUserId(userData[0]);
       })
