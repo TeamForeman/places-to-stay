@@ -109,7 +109,7 @@ const App = () => {
           </NextButton>
         </PagesDiv>
       </HeaderDiv>
-      <SlidingDiv className="listings-scroll">
+      <SlidingDiv>
         <GroupDiv id="1">
           {related.map((listing, i) => {
             if (i <= 3) {
