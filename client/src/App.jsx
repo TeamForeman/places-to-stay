@@ -98,12 +98,12 @@ const App = () => {
         <PagesDiv>
           <PageCount>{page} / 3</PageCount>
           <PageButton className="prev" type="button" onClick={previous}>
-            <svg className="arrow" viewBox="0 0 18 18">
+            <svg className="button-arrow" viewBox="0 0 18 18">
               <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
             </svg>
           </PageButton>
           <PageButton className="next" type="button" onClick={next}>
-            <svg className="arrow" viewBox="0 0 18 18">
+            <svg className="button-arrow" viewBox="0 0 18 18">
               <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path>
             </svg>
           </PageButton>

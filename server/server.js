@@ -38,7 +38,7 @@ app.get('/api/more/listings/:id', (req, res) => {
 });
 
 // getting all of the users favorite lists
-app.get('/api/users/:id/favorites', (req, res) => {
+app.get('/api/more/users/:id/favorites', (req, res) => {
   var userId = {uId: req.params.id};
   db.User.findOne(userId)
     .then(results => {

@@ -26,7 +26,7 @@ var relatedMaker = function(mainId) {
   while (array.length < 12) {
     array.push({
       id: ids[idIndex],
-      url: `http://localhost:3004/listing/${ids[idIndex]}`,
+      url: `http://localhost:3000/listing/${ids[idIndex]}`,
       type: houseTypes[Math.floor(Math.random() * houseTypes.length)],
       numOfBeds: Math.ceil(Math.random() * 5),
       photoUrl: photoUrls[Math.floor(Math.random() * photoUrls.length)],
@@ -111,6 +111,7 @@ db.User.insertMany(users, (error, docs) => {
     console.log(error);
   } else {
     console.log('success');
+    console.log('If you\'ve seen two success logs, the database is seed you can stop the script!');
   }
 });
 
