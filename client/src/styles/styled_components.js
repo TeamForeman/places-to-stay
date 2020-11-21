@@ -119,6 +119,7 @@ export const SuperHeart = styled.div`
   left: 0px;
   padding: 8px;
   width: 100%;
+  height: 45px;
   box-sizing: border-box;
 `;
 
