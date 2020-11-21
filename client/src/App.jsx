@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
-    var id = pathArr[pathArr.length - 1];
+    var id = pathArr[pathArr.length - 1] || 1;
     console.log(window.location.hash);
     getListing(id)
       .then(listingData => {
