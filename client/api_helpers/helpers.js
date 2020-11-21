@@ -13,7 +13,7 @@ export var getListing = (id) => {
 };
 
 export var getUser = (id) => {
-  return axios.get(`/api/users/${id}/favorites`)
+  return axios.get(`/api/more/users/${id}/favorites`)
     .then(results => {
       return ([results.data.uId, results.data.favorites]);
     })
