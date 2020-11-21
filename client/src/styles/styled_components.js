@@ -4,6 +4,8 @@ export const Main = styled.div`
   max-width: 1128px;
   text-align: center;
   margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 `;
 
 export const ListingDiv = styled.div`
@@ -21,6 +23,11 @@ export const SlidingDiv = styled.div`
   scroll-snap-align: center;
   text-align: center;
   margin: 0 auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const GroupDiv = styled.div`
@@ -39,6 +46,12 @@ export const HeaderDiv = styled.div`
   padding-bottom: 24px;
 `;
 
+export const Title = styled.h2`
+  margin: 0;
+  font-size: 1.4em;
+  font-weight: 500;
+`;
+
 export const PagesDiv = styled.div`
   display: flex;
   align-items: center;
@@ -49,7 +62,7 @@ export const PageCount = styled.div`
   font-size: 14px;
 `;
 
-export const PageButton = styled.div`
+export const BackButton = styled.div`
   box-sizing: border-box;
   border-radius: 50%;
   border 1px solid rgba(0, 0, 0, 0.08);
@@ -64,6 +77,31 @@ export const PageButton = styled.div`
   justify-content: center;
   display: flex;
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+  margin-right: 6px;
+  &:hover {
+    transform: scale(1.04);
+    background-color: white;
+    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px,
+    rgba(0, 0, 0, .12) 0px 6px 16px;
+  }
+`;
+
+export const NextButton = styled.div`
+  box-sizing: border-box;
+  border-radius: 50%;
+  border 1px solid rgba(0, 0, 0, 0.08);
+  color: black;
+  background-color: rgba(255, 255, 255, .9);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, .18) 0px 2px 4px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+  margin-left: 6px;
   &:hover {
     transform: scale(1.04);
     background-color: white;
@@ -128,6 +166,8 @@ export const ModalDiv = styled.div`
   background-color: white;
   transform: translate(-50%, -50%);
   border-radius: 12px;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 `;
 
 export const Overlay = styled.div`
@@ -247,4 +287,34 @@ export const PriceDiv = styled.div`
 
 export const PriceSpan = styled.span`
   font-weight: 700;
+`;
+
+export const ListingLink = styled.a`
+  height: 100%;
+  width: 100%;
+  display: block;
+  position:absolute;
+  top: 0px;
+  text-decoration: none;
+  color: black;
+  z-index: 1;
+`;
+
+export const ArrowSvg = styled.svg`
+  height: 10px;
+  width: 10px;
+`;
+
+export const HeartSvg = styled.svg`
+  height: 24px;
+  width: 24px;
+  stroke: white;
+  fill: rgba(0, 0, 0, .5);
+`;
+
+export const StarSvg = styled.svg`
+  fill: rgb(255, 56, 92);
+  height: 14px;
+  width: 14px;
+  margin-right: 4px;
 `;

@@ -51,7 +51,7 @@ app.get('/api/more/users/:id/favorites', (req, res) => {
 });
 
 // adding a list to the users favorite lists
-app.put('/api/users/:id/favorites', (req, res) => {
+app.put('/api/more/users/:id/favorites', (req, res) => {
   var userId = {uId: req.params.id};
   var newList = {
     name: req.body.listName,
@@ -69,7 +69,7 @@ app.put('/api/users/:id/favorites', (req, res) => {
 
 
 // adding a listing to a list in the users favorite lists
-app.put('/api/users/:id/:listname/:lid', (req, res) => {
+app.put('/api/more/users/:id/:listname/:lid', (req, res) => {
   var userId = {uId: req.params.id};
   var listingId = +req.params.lid;
   var listName = req.params.listname;

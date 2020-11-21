@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import styles from './styles/style.css';
 import {getListing, getUser} from '../api_helpers/helpers.js';
 import Listing from './components/Listing.jsx';
-import {SlidingDiv, GroupDiv, PageButton, HeaderDiv, Main, PagesDiv, PageCount} from './styles/styled_components.js';
+import {SlidingDiv, GroupDiv, BackButton, NextButton, HeaderDiv, Main, PagesDiv, PageCount, ArrowSvg, Title} from './styles/styled_components.js';
 import Favorites from './components/Favorites.jsx';
 
 
@@ -19,6 +18,7 @@ const App = () => {
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
     var id = pathArr[pathArr.length - 1];
+    console.log(window.location.hash);
     getListing(id)
       .then(listingData => {
         setRelated(listingData[1]);
@@ -94,19 +94,19 @@ const App = () => {
   return (
     <Main>
       <HeaderDiv>
-        <h2>More places to stay</h2>
+        <Title>More places to stay</Title>
         <PagesDiv>
           <PageCount>{page} / 3</PageCount>
-          <PageButton className="prev" type="button" onClick={previous}>
-            <svg className="button-arrow" viewBox="0 0 18 18">
+          <BackButton type="button" onClick={previous}>
+            <ArrowSvg viewBox="0 0 18 18">
               <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
-            </svg>
-          </PageButton>
-          <PageButton className="next" type="button" onClick={next}>
-            <svg className="button-arrow" viewBox="0 0 18 18">
+            </ArrowSvg>
+          </BackButton>
+          <NextButton type="button" onClick={next}>
+            <ArrowSvg viewBox="0 0 18 18">
               <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path>
-            </svg>
-          </PageButton>
+            </ArrowSvg>
+          </NextButton>
         </PagesDiv>
       </HeaderDiv>
       <SlidingDiv className="listings-scroll">
