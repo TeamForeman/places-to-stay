@@ -4,6 +4,7 @@ import {getListing, getUser} from '../api_helpers/helpers.js';
 import Listing from './components/Listing.jsx';
 import {SlidingDiv, GroupDiv, BackButton, NextButton, HeaderDiv, Main, PagesDiv, PageCount, ArrowSvg, Title} from './styles/styled_components.js';
 import Favorites from './components/Favorites.jsx';
+import CreateList from './components/CreateList.jsx';
 
 
 const App = () => {
@@ -12,8 +13,10 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [userFavs, setUserFavs] = useState([]);
   const [userId, setUserId] = useState(null);
-  const [showing, setShowing] = useState(false);
+  const [favsShowing, setFavsShowing] = useState(false);
   const [currentId, setCurrentId] = useState(null);
+  const [createShowing, setCreateShowing] = useState(false);
+  const [currentPhotoUrl, setCurrentPhotoUrl] = useState(null);
 
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
@@ -72,18 +75,31 @@ const App = () => {
     }
   };
 
-  var portalOpen = (id) => {
+  var openFavs = (id, url) => {
     setCurrentId(id);
+    setCurrentPhotoUrl(url);
     if (document.getElementById(id).style.fill === 'rgb(255, 56, 92)') {
       document.getElementById(id).style.fill = 'rgba(0, 0, 0, .5)';
+      const favsCopy = userFavs;
+      loop1:
+      for (let i = 0; i < userFavs.length; i++) {
+        loop2:
+        for (let j = 0; j < userFavs[i].listings.length; j++) {
+          if (id === userFavs[i].listings[j]) {
+            userFavs[i].listings.splice(j, 1);
+            break loop1;
+          }
+        }
+      }
       return;
     }
-    setShowing(true);
+    setFavsShowing(true);
   };
 
-  var portalClose = () => {
-    setShowing(false);
-    setCurrentId(null);
+  var closeFavs = () => {
+    setFavsShowing(false);
+    // setCurrentId(null);
+    // setCurrentPhotoUrl(null);
   };
 
   var addToFavList = (name) => {
@@ -96,7 +112,22 @@ const App = () => {
         break;
       }
     }
-    portalClose();
+    closeFavs();
+  };
+
+  var openCreate = () => {
+    setCreateShowing(true);
+    setFavsShowing(false);
+  };
+
+  var closeCreate = () => {
+    setCreateShowing(false);
+    setFavsShowing(true);
+  };
+
+  var addList = (name) => {
+    favsCopy = userFavs;
+    setUserFavs([...userFavs, {name: name, listings: [currentId], photoUrl: currentPhotoUrl}]);
   };
 
   return (
@@ -122,7 +153,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i <= 3) {
               return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={portalOpen} />
+                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={openFavs} />
               );
             }
           })}
@@ -131,7 +162,7 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 3 && i <= 7) {
               return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={portalOpen} />
+                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={openFavs} />
               );
             }
           })}
@@ -140,13 +171,14 @@ const App = () => {
           {related.map((listing, i) => {
             if (i > 7) {
               return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={portalOpen} />
+                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={openFavs} />
               );
             }
           })}
         </GroupDiv>
       </SlidingDiv>
-      <Favorites showing={showing} favorites={userFavs} closeFunc={portalClose} addFunc={addToFavList} />
+      <Favorites showing={favsShowing} favorites={userFavs} closeFunc={closeFavs} addFunc={addToFavList} openCreate={openCreate}/>
+      <CreateList showing={createShowing} closeFunc={closeCreate} />
     </Main>
   );
 };
