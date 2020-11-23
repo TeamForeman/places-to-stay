@@ -86,8 +86,16 @@ const App = () => {
     setCurrentId(null);
   };
 
-  var addToFavList = () => {
+  var addToFavList = (name) => {
     document.getElementById(currentId).style.fill = 'rgb(255, 56, 92)';
+    const favsCopy = userFavs;
+    for (let i = 0; i < userFavs.length; i++) {
+      if (userFavs[i].name === name) {
+        favsCopy[i].listings.push(currentId);
+        setUserFavs(favsCopy);
+        break;
+      }
+    }
     portalClose();
   };
 

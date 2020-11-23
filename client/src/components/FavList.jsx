@@ -4,7 +4,7 @@ import {FavImg, ListDiv, ListHeader, ListName, ListStays} from '../styles/styled
 var FavList = (props) => {
 
   var addToList = () => {
-    props.addFunc();
+    props.addFunc(props.name);
   };
 
   return (
