@@ -7,6 +7,11 @@ var Favorites = (props) => {
   if (!props.showing) {
     return null;
   }
+
+  var openCreate = () => {
+    props.openCreate();
+  };
+
   console.log(props.favorites);
   return ReactDOM.createPortal(
     <React.Fragment>
@@ -23,7 +28,7 @@ var Favorites = (props) => {
           })}
         </AllFavs>
         <ModalFoot>
-          <CreateDiv>Create a list</CreateDiv>
+          <CreateDiv onClick={openCreate}>Create a list</CreateDiv>
         </ModalFoot>
       </ModalDiv>
     </React.Fragment>
