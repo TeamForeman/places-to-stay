@@ -27,8 +27,8 @@ var Favorites = (props) => {
             return <FavList addFunc = {props.addFunc} img={list.photoUrl} name={list.name} length={list.listings.length} key={i} />;
           })}
         </AllFavs>
-        <ModalFoot>
-          <CreateDiv onClick={openCreate}>Create a list</CreateDiv>
+        <ModalFoot onClick={openCreate}>
+          <CreateDiv>Create a list</CreateDiv>
         </ModalFoot>
       </ModalDiv>
     </React.Fragment>
