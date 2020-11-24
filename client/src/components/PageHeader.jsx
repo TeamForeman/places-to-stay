@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import {Logo, MainHead, LogoDiv, MainTitle, HeadButton, SearchIconDiv, SearchLabel, MainNav, HostDiv, Earth, HostText, UserButton, ProfilePicture} from '../styles/styled_components.js';
 
 var PageHeader = () => {
