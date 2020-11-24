@@ -40,6 +40,6 @@ var PageHeader = () => {
   );
 };
 
-ReactDOM.render(<PageHeader />, document.getElementById('header'));
+
 
 export default PageHeader;
