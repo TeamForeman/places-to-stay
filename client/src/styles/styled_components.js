@@ -15,6 +15,75 @@ export const Main = styled.div`
   }
 `;
 
+export const MainHead = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1128px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  @media(min-width: 1128px) {
+    padding-left: 80px !important;
+    padding-right: 80px !important;
+  };
+  @media(min-width: 950px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+`;
+
+export const LogoDiv = styled.div`
+  color: rgb(255, 56, 92);
+`;
+
+// export const Logo = styled.svg`
+//   width: 30px;
+//   height: 32px;
+//   fill: rgb(255, 56, 92);
+// `;
+
+export const MainTitle = styled.h2`
+  font-size: 1.7em;
+  font-weight: 700;
+`;
+
+export const HeadButton = styled.button`
+  border-radius: 24px;
+  border: 1px solid rgb(221, 221, 221);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  height: 48px;
+  background-color: white;
+  &:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const SearchLabel = styled.div`
+  font-weight: 700;
+  font-size: 14px;
+`;
+
+export const SearchIconDiv = styled.div`
+  border-radius: 50%;
+  background-color: rgb(255, 56, 92);
+  width: 32px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 32px;
+  color: white;
+
+`;
+
+
 export const ListingDiv = styled.div`
   width: ${props => props.four ? '30%' : '23.5%'};
   height: 100%;
