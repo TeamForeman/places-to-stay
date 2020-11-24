@@ -76,7 +76,7 @@ export const BackButton = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
-  transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s;
   margin-right: 6px;
   &:hover {
     transform: scale(1.04);
@@ -100,7 +100,7 @@ export const NextButton = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
-  transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s;
   margin-left: 6px;
   &:hover {
     transform: scale(1.04);
@@ -318,4 +318,87 @@ export const StarSvg = styled.svg`
   height: 14px;
   width: 14px;
   margin-right: 4px;
+`;
+
+export const AddListButton = styled.button`
+  cursor: popinter;
+  text-align: center;
+  font-weight: 700;
+  background-color: rgb(34, 34, 34);
+  width: 100%;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  &:hover {
+    background: rgb(0, 0, 0);
+  }
+  &:disabled {
+    color: rgb(255, 255, 255);
+    background-color: rgb(221, 221, 221);
+    opacity: 1;
+    cursor: not-allowed;
+  }
+`;
+export const FormWrap = styled.div`
+  box-sizing: border-box;
+  height: 160px;
+  padding 32px 16px;
+
+`;
+
+export const InputWrap = styled.div`
+  box-shadow: rgb(176, 176, 176) 0 0 0 1px inset;
+  padding: 0 24px;
+  border-radius: 8px;
+  &:focus-within {
+    box-shadow: black 0 0 0 2px;
+  }
+`;
+
+export const CharLimit = styled.div`
+  color: rgb(113, 113, 113);
+  padding-top: 8px;
+  font-size: 13px;
+`;
+
+export const ListLabel = styled.label`
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  position: relative;
+`;
+
+export const NameDiv = styled.div`
+  position: absolute;
+  top: 18px;
+  left: 12px;
+  right: 12px;
+  color: rgb(113, 113, 113);
+  transform-origin: 0% 0%;
+  pointer-events: none;
+  transition: -ms-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s, -webkit-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s, transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+`;
+
+export const ListInput = styled.input`
+  width:100%;
+  margin: 26px 12px 10px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  &:focus ~ ${NameDiv} {
+    transform: translateY(-8px) scale(.75);
+  }
+  &:valid ~ ${NameDiv} {
+    transform: translateY(-8px) scale(.75);
+  }
+`;
+
+export const InnerName = styled.div`
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;

@@ -7,6 +7,12 @@ var Favorites = (props) => {
   if (!props.showing) {
     return null;
   }
+
+  var openCreate = () => {
+    props.openCreate();
+  };
+
+  console.log(props.favorites);
   return ReactDOM.createPortal(
     <React.Fragment>
       <Overlay onClick={props.closeFunc} />
@@ -21,7 +27,7 @@ var Favorites = (props) => {
             return <FavList addFunc = {props.addFunc} img={list.photoUrl} name={list.name} length={list.listings.length} key={i} />;
           })}
         </AllFavs>
-        <ModalFoot>
+        <ModalFoot onClick={openCreate}>
           <CreateDiv>Create a list</CreateDiv>
         </ModalFoot>
       </ModalDiv>
