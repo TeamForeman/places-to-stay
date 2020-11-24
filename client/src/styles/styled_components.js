@@ -20,7 +20,6 @@ export const MainHead = styled.div`
   align-items: center;
   justify-content: space-between;
   max-width: 1128px;
-  width: 100%;
   margin: 0 auto;
   position: relative;
   font-family: 'Roboto', sans-serif;
@@ -58,6 +57,7 @@ export const HeadButton = styled.button`
   width: 300px;
   height: 48px;
   background-color: white;
+  margin-left: 60px;
   &:hover {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
@@ -83,6 +83,61 @@ export const SearchIconDiv = styled.div`
 
 `;
 
+export const MainNav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const HostDiv = styled.div`
+  margin-right: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const HostText = styled.div`
+  padding: 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const Earth = styled.svg`
+  height: 16px;
+  width: 16px;
+
+  padding: 12px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const UserButton = styled.button`
+  padding: 5px 5px 5px 12px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid #dddddd;
+  border-radius: 21px;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const ProfilePicture = styled.img`
+  height: 30px;
+  width: 30px;
+  margin-left: 12px;
+  border-radius: 50%;
+`;
 
 export const ListingDiv = styled.div`
   width: ${props => props.four ? '30%' : '23.5%'};
