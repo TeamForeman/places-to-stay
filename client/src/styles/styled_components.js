@@ -5,17 +5,25 @@ export const Main = styled.div`
   text-align: center;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
-  box-sizing: border-box;
+  @media(min-width: 1128px) {
+    padding-left: 80px !important;
+    padding-right: 80px !important;
+  };
+  @media(min-width: 950px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 `;
 
 export const ListingDiv = styled.div`
-  width: 24%;
+  width: ${props => props.four ? '30%' : '23.5%'};
   height: 100%;
   position: relative;
 `;
 
 export const SlidingDiv = styled.div`
   max-width: 1128px;
+  height: 100%;
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;
@@ -32,7 +40,7 @@ export const SlidingDiv = styled.div`
 
 export const GroupDiv = styled.div`
   flex: 0 0 100%;
-  height: 278px;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -148,8 +156,9 @@ export const HeartButton = styled.button`
 
 export const ListingImg = styled.img`
 width: 100%;
-height: 178px;
+height: ${props => props.four ? '218px' : '178px'};
 border-radius: 12px;
+object-fit: cover;
 `;
 
 export const FavImg = styled.img`

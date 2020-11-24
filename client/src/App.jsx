@@ -5,6 +5,7 @@ import Listing from './components/Listing.jsx';
 import {SlidingDiv, GroupDiv, BackButton, NextButton, HeaderDiv, Main, PagesDiv, PageCount, ArrowSvg, Title} from './styles/styled_components.js';
 import Favorites from './components/Favorites.jsx';
 import CreateList from './components/CreateList.jsx';
+import {debounce} from 'lodash';
 
 
 const App = () => {
@@ -17,7 +18,21 @@ const App = () => {
   const [currentId, setCurrentId] = useState(null);
   const [createShowing, setCreateShowing] = useState(false);
   const [currentPhotoUrl, setCurrentPhotoUrl] = useState(null);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [fourSlides, setFourSlides] = useState(false);
 
+  var handleResize = () => {
+    setWidth(window.innerWidth);
+    if (window.innerWidth <= 1128 && !fourSlides) {
+      setFourSlides(true);
+      console.log(fourSlides);
+    } else if (window.innerWidth > 1128 && fourSlides) {
+      setFourSlides(false);
+      console.log(fourSlides);
+    }
+  };
+
+  window.addEventListener('resize', debounce(()=> handleResize(), 50));
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
     var id = pathArr[pathArr.length - 1] || 1;
@@ -37,7 +52,10 @@ const App = () => {
       });
   }, []);
 
+
+
   var next = () => {
+    console.log(fourSlides);
     if (!window.location.hash) {
       window.location.href = window.location.href + '#2';
       setPage(2);
@@ -46,6 +64,11 @@ const App = () => {
       window.location.href = sliced + '#3';
       setPage(3);
     } else if (window.location.hash === '#3') {
+      var sliced = window.location.href.slice(0, window.location.href.length - 2);
+      var isFour = fourSlides ? '#4' : '#1';
+      window.location.href = sliced + isFour;
+      setPage(fourSlides ? 4 : 1);
+    } else if (window.location.hash === '#4') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#1';
       setPage(1);
@@ -69,6 +92,11 @@ const App = () => {
       window.location.href = sliced + '#2';
       setPage(2);
     } else if (window.location.hash === '#1') {
+      var sliced = window.location.href.slice(0, window.location.href.length - 2);
+      var isFour = fourSlides ? '#4' : '#3';
+      window.location.href = sliced + isFour;
+      setPage(fourSlides ? 4 : 3);
+    } else if (window.location.has === '#4') {
       var sliced = window.location.href.slice(0, window.location.href.length - 2);
       window.location.href = sliced + '#3';
       setPage(3);
@@ -98,8 +126,6 @@ const App = () => {
 
   var closeFavs = () => {
     setFavsShowing(false);
-    // setCurrentId(null);
-    // setCurrentPhotoUrl(null);
   };
 
   var addToFavList = (name) => {
@@ -137,7 +163,7 @@ const App = () => {
       <HeaderDiv>
         <Title>More places to stay</Title>
         <PagesDiv>
-          <PageCount>{page} / 3</PageCount>
+          <PageCount>{page} / {fourSlides ? 4 : 3}</PageCount>
           <BackButton type="button" onClick={previous}>
             <ArrowSvg viewBox="0 0 18 18">
               <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
@@ -150,35 +176,78 @@ const App = () => {
           </NextButton>
         </PagesDiv>
       </HeaderDiv>
-      <SlidingDiv>
-        <GroupDiv id="1">
-          {related.map((listing, i) => {
-            if (i <= 3) {
-              return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={openFavs} />
-              );
-            }
-          })}
-        </GroupDiv>
-        <GroupDiv id="2">
-          {related.map((listing, i) => {
-            if (i > 3 && i <= 7) {
-              return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={openFavs} />
-              );
-            }
-          })}
-        </GroupDiv>
-        <GroupDiv id="3">
-          {related.map((listing, i) => {
-            if (i > 7) {
-              return (
-                <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} openFunc={openFavs} />
-              );
-            }
-          })}
-        </GroupDiv>
-      </SlidingDiv>
+
+      {fourSlides ?
+        <SlidingDiv>
+          <GroupDiv id="1">
+            {related.map((listing, i) => {
+              if (i <= 2) {
+                return (
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                );
+              }
+            })}
+          </GroupDiv>
+          <GroupDiv id="2">
+            {related.map((listing, i) => {
+              if (i > 2 && i <= 5) {
+                return (
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                );
+              }
+            })}
+          </GroupDiv>
+          <GroupDiv id="3">
+            {related.map((listing, i) => {
+              if (i > 5 && i <= 8) {
+                return (
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                );
+              }
+            })}
+          </GroupDiv>
+          <GroupDiv id="4">
+            {related.map((listing, i) => {
+              if (i > 8) {
+                return (
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                );
+              }
+            })}
+          </GroupDiv>
+        </SlidingDiv>
+        :
+        <SlidingDiv>
+          <GroupDiv id="1">
+            {related.map((listing, i) => {
+              if (i <= 3) {
+                return (
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                );
+              }
+            })}
+          </GroupDiv>
+          <GroupDiv id="2">
+            {related.map((listing, i) => {
+              if (i > 3 && i <= 7) {
+                return (
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                );
+              }
+            })}
+          </GroupDiv>
+          <GroupDiv id="3">
+            {related.map((listing, i) => {
+              if (i > 7) {
+                return (
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                );
+              }
+            })}
+          </GroupDiv>
+        </SlidingDiv>
+
+      }
       <Favorites showing={favsShowing} favorites={userFavs} closeFunc={closeFavs} addFunc={addToFavList} openCreate={openCreate}/>
       <CreateList addFunc={addList} showing={createShowing} closeFunc={closeCreate} />
     </Main>

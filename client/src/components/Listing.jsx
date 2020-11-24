@@ -8,7 +8,7 @@ const Listing = (props) => {
   };
 
   return (
-    <ListingDiv>
+    <ListingDiv four={props.four}>
       <ListingLink href={props.url}></ListingLink>
       <SuperHeart>
         {props.super ? <Super>SUPERHOST</Super> : <div></div>}
@@ -18,7 +18,7 @@ const Listing = (props) => {
           </HeartSvg>
         </HeartButton>
       </SuperHeart>
-      <ListingImg src={props.photo}></ListingImg>
+      <ListingImg four={props.four} src={props.photo}></ListingImg>
       <RatingsDiv>
         <span>
           <StarSvg viewBox="0 0 1000 1000">
