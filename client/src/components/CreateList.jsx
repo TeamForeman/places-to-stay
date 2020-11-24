@@ -12,6 +12,10 @@ var CreateList = (props) => {
     return null;
   }
 
+  var addList = () => {
+    props.addFunc(input);
+  };
+
   var handleChange = (e) => {
     e.preventDefault();
     if (e.target.value === '') {
@@ -43,7 +47,7 @@ var CreateList = (props) => {
           <CharLimit>50 characters maximum</CharLimit>
         </FormWrap>
         <ModalFoot>
-          <AddListButton disabled={disabled}>Create</AddListButton>
+          <AddListButton onClick={addList} disabled={disabled}>Create</AddListButton>
         </ModalFoot>
       </ModalDiv>
     </React.Fragment>,

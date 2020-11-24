@@ -104,7 +104,7 @@ const App = () => {
 
   var addToFavList = (name) => {
     document.getElementById(currentId).style.fill = 'rgb(255, 56, 92)';
-    const favsCopy = userFavs;
+    let favsCopy = userFavs;
     for (let i = 0; i < userFavs.length; i++) {
       if (userFavs[i].name === name) {
         favsCopy[i].listings.push(currentId);
@@ -126,8 +126,10 @@ const App = () => {
   };
 
   var addList = (name) => {
-    favsCopy = userFavs;
+    let favsCopy = userFavs;
     setUserFavs([...userFavs, {name: name, listings: [currentId], photoUrl: currentPhotoUrl}]);
+    setCreateShowing(false);
+    document.getElementById(currentId).style.fill = 'rgb(255, 56, 92)';
   };
 
   return (
@@ -178,7 +180,7 @@ const App = () => {
         </GroupDiv>
       </SlidingDiv>
       <Favorites showing={favsShowing} favorites={userFavs} closeFunc={closeFavs} addFunc={addToFavList} openCreate={openCreate}/>
-      <CreateList showing={createShowing} closeFunc={closeCreate} />
+      <CreateList addFunc={addList} showing={createShowing} closeFunc={closeCreate} />
     </Main>
   );
 };
