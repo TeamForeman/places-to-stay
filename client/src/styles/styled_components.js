@@ -5,14 +5,6 @@ export const Main = styled.div`
   text-align: center;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
-  @media(min-width: 1128px) {
-    padding-left: 80px !important;
-    padding-right: 80px !important;
-  };
-  @media(min-width: 950px) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
 `;
 
 export const MainHead = styled.div`
@@ -23,14 +15,6 @@ export const MainHead = styled.div`
   margin: 0 auto;
   position: relative;
   font-family: 'Roboto', sans-serif;
-  @media(min-width: 1128px) {
-    padding-left: 80px !important;
-    padding-right: 80px !important;
-  };
-  @media(min-width: 950px) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
 `;
 
 export const LogoDiv = styled.div`
@@ -535,3 +519,51 @@ export const InnerName = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-top: 1px solid #dddddd;
+  box-sizing: border-box;
+  max-width: 1128px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  &:hover {
+    cursor: pointer;
+  }
+
+`;
+
+export const LangAndCurrency = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const FooterEarth = styled.svg`
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+`;
+
+export const Language = styled.span`
+  margin-right: 24px;
+  text-decoration: underline;
+`;
+
+export const Currency = styled.span`
+  margin-right: 24px;
+`;
+
+export const FooterIcon = styled.i`
+  margin-right: 24px;
+`;
+
+export const CurrencyText = styled.span`
+  text-decoration: underline;
+`;
+
