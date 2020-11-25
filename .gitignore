@@ -24,4 +24,5 @@ coverage
 build/
 public/dist/bundle.js
 
+*.sh
 *.pem
