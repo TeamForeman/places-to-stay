@@ -38,7 +38,7 @@ var CreateList = (props) => {
         <FormWrap>
           <ListLabel for="name-of-list">
             <InputWrap>
-              <ListInput id="name-of-list" maxlength="50" type="text" required onChange={handleChange}></ListInput>
+              <ListInput id="name-of-list" maxlength="50" type="text" autocomplete="off" required onChange={handleChange}></ListInput>
               <NameDiv id="name-transform">
                 <InnerName>Name</InnerName>
               </NameDiv>

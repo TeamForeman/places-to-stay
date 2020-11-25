@@ -199,6 +199,13 @@ export const BackButton = styled.div`
     background-color: white;
     box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px,
     rgba(0, 0, 0, .12) 0px 6px 16px;
+  };
+  &:active {
+    border-color: rgba(0, 0, 0, .08);
+    background-color: rgb(255, 255, 255);
+    color: white;
+    box-shadow: none;
+    transform: scale(1);
   }
 `;
 
@@ -223,6 +230,13 @@ export const NextButton = styled.div`
     background-color: white;
     box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px,
     rgba(0, 0, 0, .12) 0px 6px 16px;
+  };
+  &:active {
+    border-color: rgba(0, 0, 0, .08);
+    background-color: rgb(255, 255, 255);
+    color: white;
+    box-shadow: none;
+    transform: scale(1);
   }
 `;
 
@@ -467,8 +481,8 @@ export const FormWrap = styled.div`
 
 export const InputWrap = styled.div`
   box-shadow: rgb(176, 176, 176) 0 0 0 1px inset;
-  padding: 0 24px;
   border-radius: 8px;
+  padding: 0 1px;
   &:focus-within {
     box-shadow: black 0 0 0 2px;
   }
@@ -500,8 +514,12 @@ export const NameDiv = styled.div`
 
 export const ListInput = styled.input`
   width:100%;
-  margin: 26px 12px 10px;
+  margin: 26px 0 10px;
+  padding: 0 12px;
   border: none;
+  box-sizing: border-box;
+  font-size: 17px;
+  color: rgb(34, 34, 34);
   &:focus {
     outline: none;
   }
