@@ -12,7 +12,6 @@ var Favorites = (props) => {
     props.openCreate();
   };
 
-  console.log(props.favorites);
   return ReactDOM.createPortal(
     <React.Fragment>
       <Overlay onClick={props.closeFunc} />
