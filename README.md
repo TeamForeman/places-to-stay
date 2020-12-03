@@ -20,6 +20,17 @@
 > To make changes run npm run build to start web-pack for front in react development.
 > To make and track changes on the server run npm start to start running the server with nodemon.
 
+## CRUD API
+
+|Action|Method|URL|
+|------|------|---|
+|Create a new user|POST|/api/more/users/:id|
+|Get the related listings for a specific listing|GET|/api/more/users/:id|
+|Get all of the user's favorite lists|GET|/api/more/users/:id/favorites|
+|Add a list to the user's favorites list|PUT|/api/more/users/:id/favorites|
+|Add a listing to a list in the users favorite lists|PUT|/api/more/users/:id/:listname/:lid|
+|Delete a user|DELETE|/api/more/users/:id|
+
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
