@@ -24,7 +24,12 @@
 
 |Action|Method|URL|
 |------|------|---|
-|Create a new user|GET|'/api/more/users'
+|Create a new user|POST|/api/more/users|
+|Get the related listings for a specific listing|GET|/api/more/users/:id|
+|Get all of the user's favorite lists|GET|/api/more/users/:id/favorites|
+|Add a list to the user's favorites list|PUT|/api/more/users/:id/favorites|
+|Add a listing to a list in the users favorite lists|PUT|/api/more/users/:id/:listname/:lid|
+|Delete a user|DELETE|/api/more/users|
 
 ## Requirements
 
