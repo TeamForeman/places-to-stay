@@ -20,6 +20,12 @@
 > To make changes run npm run build to start web-pack for front in react development.
 > To make and track changes on the server run npm start to start running the server with nodemon.
 
+## CRUD API
+
+|Action|Method|URL|
+|------|------|---|
+|Create a new user|GET|'/api/more/users'
+
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
