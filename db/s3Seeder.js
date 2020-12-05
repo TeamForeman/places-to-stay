@@ -18,3 +18,5 @@ for (let i = 1; i <= 1000; i ++) {
     response.data.pipe(writeStream);
   });
 }
+
+// Copy your images folder into a public S3 bucket after you seed it.
