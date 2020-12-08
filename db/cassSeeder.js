@@ -3,12 +3,12 @@ const imagePath = require('./s3ImagePath.js');
 const db = require('./db.js');
 const fs = require('fs');
 const path = require('path');
-let writeListings = fs.createWriteStream(path.join(__dirname,'../data', `listingsCass.csv`));
-let writeFavorites = fs.createWriteStream(path.join(__dirname,'../data', `favoritesCass.csv`));
-let writeUsersFavs = fs.createWriteStream(path.join(__dirname,'../data', `usersFavsCass.csv`));
-let writeRelatedListings = fs.createWriteStream(path.join(__dirname,'../data', `relatedListingsCass.csv`));
-let writeUsers = fs.createWriteStream(path.join(__dirname, '../data', 'usersCass.csv'));
-const seedAmount = 10000000;
+let writeListings = fs.createWriteStream(path.join(__dirname,'../data', `listingsCassTest.csv`));
+let writeFavorites = fs.createWriteStream(path.join(__dirname,'../data', `favoritesCassTest.csv`));
+let writeUsersFavs = fs.createWriteStream(path.join(__dirname,'../data', `usersFavsCassTest.csv`));
+let writeRelatedListings = fs.createWriteStream(path.join(__dirname,'../data', `relatedListingsCassTest.csv`));
+let writeUsers = fs.createWriteStream(path.join(__dirname, '../data', 'usersCassTest.csv'));
+const seedAmount = 100;
 
 ////////// Listings Table
 const listingsTableHeaders = 'related_listing_ids, type, num_of_beds, photo_url, superhost, rating, num_of_ratings, description, price';

@@ -73,6 +73,69 @@ COPY users_favs_join(user_id, favorites_id)
 FROM '/Users/michaelwetterauer/Desktop/HR49/Hack-Reactor/seniorWork/SDC/places-to-stay/data/usersFavs.csv'
 DELIMITER ',';
 
--- Copy csv's into DB after generating them
+-- to import schema to DB and seed: psql postgres < db/postSchema.sql
 
--- to import schema to DB run : psql postgres < db/postSchema.sql
+-------------- Potential Solutions to long seed time ------------------
+-- https://www.postgresql.org/docs/8.1/populate.html
+
+-- Remove Indexes:
+--If you are loading a freshly created table, the fastest way is to create the table, bulk load the table's data using COPY,
+--then create any indexes needed for the table. Creating an index on pre-existing data is quicker than updating it incrementally as each row is loaded.
+
+-- Remove Foreign Key Constraints:
+-- Just as with indexes, a foreign key constraint can be checked "in bulk" more efficiently than row-by-row. So it may be useful to drop foreign key constraints, load data, and re-create the constraints. -- -- Again, there is a trade-off between data load speed and loss of error checking while the constraint is missing.
+
+
+-- Create foreign keys (if you seed without them):
+-- ALTER TABLE listings
+--   ADD FOREIGN KEY (related_listing_ids);
+
+-- Create indexes:
+-- CREATE INDEX ON listings (related_listing_ids);
+-- CREATE INDEX ON favorites (listing_id);
+-- CREATE INDEX ON users_favs_join (user_id);
+-- CREATE INDEX ON users_favs_join (favorites_id);
+
+
+-------------------- Query Tests ------------------
+
+-- to open postgres in terminal: psql postgres
+-- to list databases: \l
+-- to use database: \c databaseName
+
+-- Before Adding Indexes on foreign keys:
+
+-- GET one listing: '/api/more/listings/:id'
+-- EXPLAIN (ANALYZE) SELECT * FROM listings WHERE(id=9999900);
+-- Planning Time: 0.070ms
+-- Execution Time: 8.510ms
+
+-- GET related_listings WHERE id = 9999900
+-- EXPLAIN (ANALYZE) SELECT * FROM related_listings WHERE id = 9958990;
+-- Planning Time: 0.074ms
+-- Execution Time: 14.991ms
+
+-- GET user's favorites
+-- EXPLAIN (ANALYZE) SELECT * FROM favorites, users, users_favs_join WHERE favorites.id = users_favs_join.favorites_id AND users_favs_join.user_id = users.id AND users.id = 10;
+-- SELECT * FROM favorites, users, users_favs_join WHERE favorites.id = users_favs_join.favorites_id AND users_favs_join.user_id = users.id AND users.id = 10;
+-- Planning Time: 0.460ms
+-- Execution Time: 8056.750ms
+
+
+-- After Adding Indexes on foreign keys:
+
+-- GET one listing: '/api/more/listings/:id'
+-- EXPLAIN (ANALYZE) SELECT * FROM listings WHERE(id=9989900);
+-- Planning Time: 1.997 ms
+-- Execution Time: 0.106 ms
+
+-- GET related_listings WHERE id = 9999900
+-- EXPLAIN (ANALYZE) SELECT * FROM related_listings WHERE id = 9988990;
+-- Planning Time: 8.112 ms
+-- Execution Time: 0.032 ms
+
+-- GET user's favorites
+-- EXPLAIN (ANALYZE) SELECT * FROM favorites, users, users_favs_join WHERE favorites.id = users_favs_join.favorites_id AND users_favs_join.user_id = users.id AND users.id = 98000090;
+-- SELECT * FROM favorites, users, users_favs_join WHERE favorites.id = users_favs_join.favorites_id AND users_favs_join.user_id = users.id AND users.id = 10;
+-- Planning Time: 15.642 ms
+-- Execution Time: 0.052 ms
