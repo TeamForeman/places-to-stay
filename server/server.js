@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
-const db = require('../db/db.js');
-const postGDB = require('../db/postGDB.js');
+// const db = require('../db/db.js');
+// const postGDB = require('../db/postGDB.js');
 const bodyParser = require('body-parser');
+const {getRelatedListings, getUserFavorites, addNewFavorite, updateBeds, deleteFavorite} = require('../db/postQueries.js');
 
 const app = express();
 
@@ -12,139 +13,99 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const port = 3000;
 
+
 // Create
-// Creates a new user
-app.post('/api/more/users/:id', (req, res) => {
-  console.log(req.params.id);
-  db.User.create({
-    uId: req.params.id,
-    favorites: []
+// adds new favorite
+app.post('/api/more/favorites/', (req, res) => {
+  console.log(req.body);
+  addNewFavorite(req.body, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(result);
+    }
   })
-  .then(result => {
-    res.status(200).send(result);
-  })
-  .catch(err => {
-    console.log(err);
-    res.send(404);
-  });
-})
+});
 
 // Read
-// Not sure what this does...
-app.get('/listing/*', (req, res) => {
-  if (+req.params['0'] >= 1 && +req.params['0'] <= 100) {
-    console.log('req.params[0]: ', req.params['0'])
-    res.status(200);
-    res.sendFile(path.join(__dirname, '../public/dist/index.html'));
-  } else {
-    res.status(404);
-    res.end();
-  }
-});
+// this is if I want the image to link to a new listings page
+// app.get('/listing/*', (req, res) => {
+//   if (+req.params['0'] >= 1 && +req.params['0'] <= 100) {
+//     console.log('req.params[0]: ', req.params['0'])
+//     res.status(200);
+//     res.sendFile(path.join(__dirname, '../public/dist/index.html'));
+//   } else {
+//     res.status(404);
+//     res.end();
+//   }
+// });
 
 // Read
 // getting the related listings for a specific listing
 app.get('/api/more/listings/:id', (req, res) => {
   var listingId = req.params.id;
-  db.Listing.findOne({lId: listingId})
-    .then(data => {
-      if (data === null) {
-        throw new Error(`No data for listing ${listingId}`);
-      }
-      console.log(data);
-      res.status(200).send(data);
-    })
-    .catch(err => {
-      console.log(err);
-      res.send(404);
-    });
+  getRelatedListings(listingId, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(result);
+    }
+  });
 });
 
 // Read
 // getting all of the users favorite lists
 app.get('/api/more/users/:id/favorites', (req, res) => {
-  var userId = {uId: req.params.id};
-  db.User.findOne(userId)
-    .then(results => {
-      res.status(200).send(results);
-    })
-    .catch(err => {
+  var userId = req.params.id;
+  console.log(userId);
+  getUserFavorites(userId, (err, result) => {
+    if (err) {
       console.log(err);
-      res.status(404);
-    });
+      res.status(500).send(err);
+    } else {
+      // console.log('favorites: ', result);
+      res.status(200).send(result);
+    }
+  });
 });
 
 // Update
-// adding a list to the users favorite lists
-app.put('/api/more/users/:id/favorites', (req, res) => {
-  console.log('listname: ', req.body);
-  var userId = {uId: req.params.id};
-  var newList = {
-    name: req.body.listName,
-    photoUrl: null,
-    listings: []
-  };
-  db.User.findOneAndUpdate(userId, { $push: { favorites: newList}})
-    .then(result => {
-      res.status(200).send(result);
-    })
-    .catch(err => {
+// change number of beds in a listings
+app.put('/api/more/listings/:id/beds', (req, res) => {
+  console.log('beds: ', req.body);
+  let listingId = req.params.id;
+  let beds = req.body;
+  updateBeds(listingId, beds, (err, results) => {
+    if (err) {
       console.log(err);
-    });
-});
-
-// adding a listing to a list in the users favorite lists
-app.put('/api/more/users/:id/:listname/:lid', (req, res) => {
-  var userId = {uId: req.params.id};
-  var listingId = +req.params.lid;
-  var listName = req.params.listname;
-  db.User.findOne(userId)
-    .then(results => {
-      for (let i = 0; i < results.favorites.length; i++) {
-        if (results.favorites[i].name === listName) {
-          var index = i;
-          break;
-        }
-      }
-      results.favorites[index].listings.push(listingId);
-      return db.User.findOneAndUpdate(userId, { favorites: results.favorites});
-    })
-    .then(() => {
-      return db.User.findOne(userId);
-    })
-    .then(results => {
+      res.status(500).send(err);
+    } else {
       res.status(200).send(results);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(404);
-    });
+    }
+  })
 });
-
 
 // Delete
-// Delete a user from the users collection
-app.delete('/api/more/users/:id', (req, res) => {
-  db.User.deleteOne({
-    uId: req.params.id,
+// Delete a favorite from the users favorites collection
+app.delete('/api/more/favorites/:id/', (req, res) => {
+  let favoriteId = req.params.id;
+  deleteFavorite(favoriteId, (err, results) => {
+    if (err) {
+      res.status(500).send(err)
+    } else {
+      res.status(200).send(results);
+    }
   })
-  .then(result => {
-    res.status(200).send(result);
-  })
-  .catch(err => {
-    console.log(err);
-    res.send(400);
-  });
-})
+});
 
 app.listen(port, () => {
   console.log(`Server connected at http://localhost:${port}`);
 });
 
-db.con.on('error', console.error.bind(console, 'error'));
-db.con.once('open', () => {
-  console.log('Connected to beartnt!');
-});
+// db.con.on('error', console.error.bind(console, 'error'));
+// db.con.once('open', () => {
+//   console.log('Connected to beartnt!');
+// });
 
 
 

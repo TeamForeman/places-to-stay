@@ -35,15 +35,16 @@ const App = () => {
   window.addEventListener('resize', debounce(()=> handleResize(), 50));
   useEffect(() => {
     var pathArr = window.location.pathname.split('/');
-    var id = pathArr[pathArr.length - 1] || 1;
+    var id = pathArr[pathArr.length - 1] || 3;
     console.log(window.location.hash);
     getListing(id)
       .then(listingData => {
         setRelated(listingData[1]);
         setListing(listingData[0]);
-        return getUser(1);
+        return getUser(id);
       })
       .then(userData => {
+        console.log('userdata: ', userData);
         setUserFavs(userData[1]);
         setUserId(userData[0]);
       })
@@ -183,7 +184,7 @@ const App = () => {
             {related.map((listing, i) => {
               if (i <= 2) {
                 return (
-                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.num_of_beds} photo={listing.photo_url} rating={listing.rating} super={listing.superhost} ratings={listing.num_of_ratings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
                 );
               }
             })}
@@ -192,7 +193,7 @@ const App = () => {
             {related.map((listing, i) => {
               if (i > 2 && i <= 5) {
                 return (
-                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.num_of_beds} photo={listing.photo_url} rating={listing.rating} super={listing.superhost} ratings={listing.num_of_ratings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
                 );
               }
             })}
@@ -201,7 +202,7 @@ const App = () => {
             {related.map((listing, i) => {
               if (i > 5 && i <= 8) {
                 return (
-                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.num_of_beds} photo={listing.photo_url} rating={listing.rating} super={listing.superhost} ratings={listing.num_of_ratings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
                 );
               }
             })}
@@ -210,7 +211,7 @@ const App = () => {
             {related.map((listing, i) => {
               if (i > 8) {
                 return (
-                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.num_of_beds} photo={listing.photo_url} rating={listing.rating} super={listing.superhost} ratings={listing.num_of_ratings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
                 );
               }
             })}
@@ -222,7 +223,7 @@ const App = () => {
             {related.map((listing, i) => {
               if (i <= 3) {
                 return (
-                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.num_of_beds} photo={listing.photo_url} rating={listing.rating} super={listing.superhost} ratings={listing.num_of_ratings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
                 );
               }
             })}
@@ -231,7 +232,7 @@ const App = () => {
             {related.map((listing, i) => {
               if (i > 3 && i <= 7) {
                 return (
-                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.num_of_beds} photo={listing.photo_url} rating={listing.rating} super={listing.superhost} ratings={listing.num_of_ratings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
                 );
               }
             })}
@@ -240,7 +241,7 @@ const App = () => {
             {related.map((listing, i) => {
               if (i > 7) {
                 return (
-                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.numOfBeds} photo={listing.photoUrl} rating={listing.rating} super={listing.superhost} ratings={listing.numOfRatings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
+                  <Listing url={listing.url} key={listing.id} id={listing.id} type={listing.type} beds={listing.num_of_beds} photo={listing.photo_url} rating={listing.rating} super={listing.superhost} ratings={listing.num_of_ratings} description={listing.description} price={listing.price} four={fourSlides} openFunc={openFavs} />
                 );
               }
             })}

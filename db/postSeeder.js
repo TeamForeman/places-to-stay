@@ -1,12 +1,11 @@
 const faker = require('faker');
 const imagePath = require('./s3ImagePath.js');
-const db = require('./db.js');
 const fs = require('fs');
 const path = require('path');
 let writeListings = fs.createWriteStream(path.join(__dirname,'../data', `listings.csv`));
-let writeFavorites = fs.createWriteStream(path.join(__dirname,'../data', `favorites.csv`));
-let writeUsersFavs = fs.createWriteStream(path.join(__dirname,'../data', `usersFavs.csv`));
-let writeRelatedListings = fs.createWriteStream(path.join(__dirname,'../data', `relatedListings.csv`));
+// let writeFavorites = fs.createWriteStream(path.join(__dirname,'../data', `favorites.csv`));
+// let writeUsersFavs = fs.createWriteStream(path.join(__dirname,'../data', `usersFavs.csv`));
+let writeRelatedListings = fs.createWriteStream(path.join(__dirname,'../data', `relatedListingsJoin.csv`));
 const seedAmount = 10000000;
 
 ////////// Listings Table
@@ -14,11 +13,11 @@ const listingsTableHeaders = 'related_listing_ids, type, num_of_beds, photo_url,
 
 const houseTypes = ['Entire house', 'Hotel room', 'Entire apartment', 'Tent', 'Private room', 'Entire condominium'];
 
-const listingData = `{${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}}, ${houseTypes[Math.floor(Math.random() * houseTypes.length)]}, ${Math.floor(Math.random() * 10 + 1)}, ${imagePath + Math.floor(Math.random() * 1000 + 1)}.jpg, ${faker.random.boolean()}, ${(Math.random() * 5).toFixed(2)}, ${Math.floor(Math.random() * 300)}, ${faker.lorem.sentence()}, ${(Math.random() * 1000).toFixed(2)}`
+const listingData = `"{${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}, ${Math.floor(Math.random() * 10000000 + 1)}}", ${houseTypes[Math.floor(Math.random() * houseTypes.length)]}, ${Math.floor(Math.random() * 10 + 1)}, ${imagePath + Math.floor(Math.random() * 1000 + 1)}.jpg, ${faker.random.boolean()}, ${(Math.random() * 5).toFixed(2)}, ${Math.floor(Math.random() * 300)}, ${faker.lorem.sentence()}, ${(Math.random() * 1000).toFixed(2)}`
 
 function listingStream(i) {
   for (; i < seedAmount; i ++) {
-    if (!writeListings.write(`${Math.floor(Math.random() * seedAmount) + 1}, ${houseTypes[Math.floor(Math.random() * houseTypes.length)]}, ${Math.floor(Math.random() * 10 + 1)}, ${imagePath + Math.floor(Math.random() * 1000 + 1)}.jpg, ${faker.random.boolean()}, ${(Math.random() * 5).toFixed(2)}, ${Math.floor(Math.random() * 300)}, ${faker.lorem.sentence()}, ${(Math.random() * 1000).toFixed(2)}` + '\n')) {
+    if (!writeListings.write(`${Math.floor(Math.random() * 10000000 + 1)}|${houseTypes[Math.floor(Math.random() * houseTypes.length)]}|${Math.floor(Math.random() * 10 + 1)}|${imagePath + Math.floor(Math.random() * 1000 + 1)}.jpg|${faker.random.boolean()}|${(Math.random() * 5).toFixed(2)}|${Math.floor(Math.random() * 300)}|${faker.lorem.sentence()}|${(Math.random() * 1000).toFixed(2)}` + '\n')) {
       writeListings.once('drain', function() {
         listingStream(i + 1);
       });
@@ -60,7 +59,7 @@ const favoritesData = `${favoriteTitles[Math.floor(Math.random() * favoriteTitle
 
 function favoritesStream(i) {
   for (; i < seedAmount; i ++) {
-    if (!writeFavorites.write(`${favoriteTitles[Math.floor(Math.random() * favoriteTitles.length)]}, ${Math.floor(Math.random() * seedAmount) + 1}` + '\n')) {
+    if (!writeFavorites.write(`${favoriteTitles[Math.floor(Math.random() * favoriteTitles.length)]}, ${Math.floor(Math.random() * seedAmount) + 1}, ${imagePath + Math.floor(Math.random() * 1000 + 1)}.jpg` + '\n')) {
       writeFavorites.once('drain', function() {
         favoritesStream(i + 1);
       });
@@ -88,8 +87,8 @@ function relatedListingsStream(i) {
 
 const seeder = () => {
   listingStream(0);
-  usersFavsJoinStream(0);
-  favoritesStream(0);
+  // usersFavsJoinStream(0);
+  // favoritesStream(0);
   relatedListingsStream(0);
 }
 seeder();
