@@ -54,6 +54,15 @@ COPY users_favs_join(user_id, favorites_id)
 FROM '/Users/michaelwetterauer/Desktop/HR49/Hack-Reactor/seniorWork/SDC/places-to-stay/data/usersFavs.csv'
 DELIMITER ',';
 
+
+-- Open DB in amazon instance:
+-- bash login.sh
+-- sudo -i -u postgres
+-- psql
+-- \l   --shows list of dbs
+--\c beartnt  --uses beartnt
+
+
 -- Create indexes:
 -- CREATE INDEX ON favorites (listing_id);
 -- CREATE INDEX ON users_favs_join (user_id);
