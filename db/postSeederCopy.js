@@ -5,7 +5,7 @@ const path = require('path');
 let writeListings = fs.createWriteStream(path.join(__dirname,'../data', `listings.csv`));
 let writeFavorites = fs.createWriteStream(path.join(__dirname,'../data', `favorites.csv`));
 let writeUsersFavs = fs.createWriteStream(path.join(__dirname,'../data', `usersFavs.csv`));
-let writeRelatedListings = fs.createWriteStream(path.join(__dirname,'../data', `relatedListingsJoin.csv`));
+// let writeRelatedListings = fs.createWriteStream(path.join(__dirname,'../data', `relatedListingsJoin.csv`));
 const seedAmount = 10000000;
 
 ////////// Listings Table
@@ -13,7 +13,7 @@ const houseTypes = ['Entire house', 'Hotel room', 'Entire apartment', 'Tent', 'P
 
 function listingStream(i) {
   for (; i < seedAmount; i ++) {
-    if (!writeListings.write(`${Math.floor(Math.random() * seedAmount + 1)}|${houseTypes[Math.floor(Math.random() * houseTypes.length)]}|${Math.floor(Math.random() * 10 + 1)}|${imagePath + Math.floor(Math.random() * 1000 + 1)}.jpg|${faker.random.boolean()}|${(Math.random() * 5).toFixed(2)}|${Math.floor(Math.random() * 300)}|${faker.lorem.sentence()}|${(Math.random() * 1000).toFixed(2)}` + '\n')) {
+    if (!writeListings.write(`${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)},${Math.floor(Math.random() * seedAmount + 1)}|${houseTypes[Math.floor(Math.random() * houseTypes.length)]}|${Math.floor(Math.random() * 10 + 1)}|${imagePath + Math.floor(Math.random() * 1000 + 1)}.jpg|${faker.random.boolean()}|${(Math.random() * 5).toFixed(2)}|${Math.floor(Math.random() * 300)}|${faker.lorem.sentence()}|${(Math.random() * 1000).toFixed(2)}` + '\n')) {
       writeListings.once('drain', function() {
         listingStream(i + 1);
       });
@@ -72,6 +72,6 @@ const seeder = () => {
   listingStream(0);
   usersFavsJoinStream(0);
   favoritesStream(0);
-  relatedListingsStream(0);
+  // relatedListingsStream(0);
 }
 seeder();

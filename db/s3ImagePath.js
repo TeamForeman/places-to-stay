@@ -1,0 +1,1 @@
+module.exports = 'https://sdc-bucket-wetterauer.s3.us-east-2.amazonaws.com/images/'; // + `{imageNumber}.jpg`
